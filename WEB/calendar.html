@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    // JavaScript code for calendar generation
+    const year = parseInt(prompt("Enter a year:"));
+
+    if (!isNaN(year)) {
+      document.write("<pre>"); // Use pre tag for preserving whitespace
+
+      for (let month = 1; month <= 12; month++) {
+        const monthDate = new Date(year, month - 1, 1);
+        document.write(`\n${monthDate.toLocaleString('default', { month: 'long' })} ${year}\n`);
+        
+        const firstDay = monthDate.getDay();
+        
+        document.write("Sun Mon Tue Wed Thu Fri Sat\n");
+        
+        for (let i = 0; i < firstDay; i++) {
+          document.write("    ");
+        }
+        
+        let currentDate = new Date(year, month - 1, 1);
+        while (currentDate.getMonth() === month - 1) {
+          const day = currentDate.getDate();
+          document.write(`${day < 10 ? ' ' : ''}${day}  `);
+          if (currentDate.getDay() === 6) {
+            document.write("\n");
+          }
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+        
+        document.write("\n");
+      }
+
+      document.write("</pre>");
+    } else {
+      alert("Invalid input. Please enter a valid year.");
+    }
+  </script>
+
+</body>
+</html>
