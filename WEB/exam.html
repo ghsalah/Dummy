@@ -1,0 +1,100 @@
+<html>
+<body>
+ <style>
+ body{
+  text-align:center;
+ }
+ div{
+ 
+ }
+ div{
+  border:1px solid #000;
+  width:80%;
+  padding:20px;
+  margin:auto;
+   margin-bottom:10px;
+  font-size:20px
+ }
+ .form1 input{
+ margin:10px;
+ }
+ 
+ .form2{
+  text-align:left;
+ 
+ }
+ #section{
+  display:none;
+ }
+ 
+ </style>
+ <div class="header" id="header"> 
+  <h3>Examination 2023-2024</h3>
+   <form class="form1">
+     Reg:No :<input type="number" name="reg" placeholder="Enter The Reg:No">
+	 Password : <input type="password" placeholder="Enter The password">
+    <br>
+	  <input type="submit" value="SUBMIT" onsubmit="regValidation()">
+	 <input type="reset" value="CLEAR" >
+   </form>
+ </div>
+ 
+ <div class="section" id="section"> 
+   <form class="form2">
+     1) How many union territories are there in India? <!--Answer: 7--><br>
+	 <input type="radio"> a) 7 <br>
+	 <input type="radio"> b) 8 <br>
+	 <input type="radio"> c) 9 <br>
+	 <input type="radio"> d)10<br><br>
+	 
+     2) Which animal is the national bird of India?<!--Answer: Peacock--><br>
+	 <input type="radio"> a) Peacock <br>
+	 <input type="radio"> b) Crow <br>
+	 <input type="radio"> c) Pegion <br>
+	 <input type="radio"> d) Parrot <br><br>
+	 
+     3) Which animal is the national animal of India?<!--Answer: Tiger--><br>
+	 <input type="radio"> a) Tiger <br>
+	 <input type="radio"> b) Lion <br>
+	 <input type="radio"> c) Zebra <br>
+	 <input type="radio"> d) Cow <br><br>
+	 
+     4) How many colours are there on the Indian Flag?<!--Answer: 3--><br>
+	 <input type="radio"> a) 3 <br>
+	 <input type="radio"> b) 4 <br>
+	 <input type="radio"> c) 2 <br>
+	 <input type="radio"> d) 7 <br><br>
+	 
+     5) Who is the king of the Jungle?<!--Answer: Lion--><br>
+	 <input type="radio"> a) Fox <br>
+	 <input type="radio"> b) Tiger <br>
+	 <input type="radio"> c) Lion <br>
+	 <input type="radio"> d) Horse <br><br>
+	 
+     6) How many states are there in India?<!--Answer: 29--><br>
+	 <input type="radio"> a) 28 <br>
+	 <input type="radio"> b) 29 <br>
+	 <input type="radio"> c) 31 <br>
+	 <input type="radio"> d) 33 <br><br>
+	 
+	 <input type="submit" value="SUBMIT" >
+	 <input type="reset" value="CLEAR" >
+   </form>
+ </div>
+ 
+ <script>
+       function regValidation() {
+            var regno = document.logform.regno.value;
+     var pass = document.logform.pass.value;
+     console.log(regno);
+     console.log(pass);
+            
+
+     
+            document.getElementById('header').style.display="none"
+            document.getElementById('section').style.display = 'block';
+
+        }
+ </script>
+</body>
+</html>
