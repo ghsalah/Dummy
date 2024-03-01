@@ -1,0 +1,77 @@
+# create database
+---------------
+create database sample;
+
+#show databases
+
+show databases
+
+# changing database
+-----------------
+use sample;
+
+# create table
+-----------
+create table demo (id int,name varchar(20));
+
+#
+------------
+insert into demo values(2,"jobby");
+#
+------------------
+
+SHOW COLUMNS FROM demo;
+
+select * from demo;
+
+select name from demo;
+
+delete from demo where name="ponnu";
+
+
+#alter table 
+--------------
+alter table demo add column name varchar(20);
+
+#update value in col
+--------------------
+update demo set name="robin zakriya" where id=1;
+
+update demo set  id=1 where name="robin zakriya";
+
+
+01/03/2024
+==========
+
+
+# show without duplicated data
+-------------------------------
+select distinct name from demo;
+
+# show only the single row
+------------------------
+select * from demo where id=10;
+
+# show the rows having id abow 5
+------------------------
+ -excluding 5- 
+select * from demo where id>5;
+select * from demo where id<5;
+ -including 5-
+select * from demo where id>=5;
+select * from demo where id<=5;
+ -without id 5
+select * from demo where id!=5;
+ -Between-
+# print id b/w 5 and 10
+
+ select * from demo where id>5 and id<10;
+
+ # to get name start with "b"
+------------------------------
+-first-
+select name from demo where name like 'b%'; 
+-second-
+select name from demo where name like '_o%';
+-thred-
+select name from demo where name like '__e%';
