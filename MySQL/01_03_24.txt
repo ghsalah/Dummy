@@ -1,0 +1,569 @@
+ysql: [Warning] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe: ignoring option '--no-beep' due to invalid value ''.
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sample             |
+| sys                |
++--------------------+
+6 rows in set (0.07 sec)
+
+mysql> use sample;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_sample |
++------------------+
+| demo             |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from demo;
++------+----------------------------+
+| id   | name                       |
++------+----------------------------+
+|    1 | robin zakriya              |
+|    2 | beegam hazrath mahal       |
+|    3 | ayesha bin muhammad kabeer |
+|    5 | NULL                       |
+|    6 | NULL                       |
+|    7 | NULL                       |
+|    9 | NULL                       |
+|    2 | beegam hazrath mahal       |
+|   10 | NULL                       |
+|   11 | NULL                       |
++------+----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set name="joy" where id=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+
+| id   | name                       |
++------+----------------------------+
+|    1 | robin zakriya              |
+|    2 | beegam hazrath mahal       |
+|    3 | ayesha bin muhammad kabeer |
+|    5 | joy                        |
+|    6 | NULL                       |
+|    7 | NULL                       |
+|    9 | NULL                       |
+|    2 | beegam hazrath mahal       |
+|   10 | NULL                       |
+|   11 | NULL                       |
++------+----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set name="robin" where id=6;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set name="loki" where id=7;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set name="maya" where id=9;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set name="thor" where id=10;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set name="Luffy" where id=11;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+
+| id   | name                       |
++------+----------------------------+
+|    1 | robin zakriya              |
+|    2 | beegam hazrath mahal       |
+|    3 | ayesha bin muhammad kabeer |
+|    5 | joy                        |
+|    6 | robin                      |
+|    7 | loki                       |
+|    9 | maya                       |
+|    2 | beegam hazrath mahal       |
+|   10 | thor                       |
+|   11 | Luffy                      |
++------+----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select distinct name from demo;
++----------------------------+
+| name                       |
++----------------------------+
+| robin zakriya              |
+| beegam hazrath mahal       |
+| ayesha bin muhammad kabeer |
+| joy                        |
+| robin                      |
+| loki                       |
+| maya                       |
+| thor                       |
+| Luffy                      |
++----------------------------+
+9 rows in set (0.00 sec)
+
+mysql> alter table demo add column age int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+
+| id   | name                       | age  |
++------+----------------------------+------+
+|    1 | robin zakriya              | NULL |
+|    2 | beegam hazrath mahal       | NULL |
+|    3 | ayesha bin muhammad kabeer | NULL |
+|    5 | joy                        | NULL |
+|    6 | robin                      | NULL |
+|    7 | loki                       | NULL |
+|    9 | maya                       | NULL |
+|    2 | beegam hazrath mahal       | NULL |
+|   10 | thor                       | NULL |
+|   11 | Luffy                      | NULL |
++------+----------------------------+------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set age=28 where id =1 ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+
+| id   | name                       | age  |
++------+----------------------------+------+
+|    1 | robin zakriya              |   28 |
+|    2 | beegam hazrath mahal       | NULL |
+|    3 | ayesha bin muhammad kabeer | NULL |
+|    5 | joy                        | NULL |
+|    6 | robin                      | NULL |
+|    7 | loki                       | NULL |
+|    9 | maya                       | NULL |
+|    2 | beegam hazrath mahal       | NULL |
+|   10 | thor                       | NULL |
+|   11 | Luffy                      | NULL |
++------+----------------------------+------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set id="4" where name="joy";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+
+| id   | name                       | age  |
++------+----------------------------+------+
+|    1 | robin zakriya              |   28 |
+|    2 | beegam hazrath mahal       | NULL |
+|    3 | ayesha bin muhammad kabeer | NULL |
+|    4 | joy                        | NULL |
+|    6 | robin                      | NULL |
+|    7 | loki                       | NULL |
+|    9 | maya                       | NULL |
+|    2 | beegam hazrath mahal       | NULL |
+|   10 | thor                       | NULL |
+|   11 | Luffy                      | NULL |
++------+----------------------------+------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set id="5" where name="robin";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set id="8" where name="maya";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+
+| id   | name                       | age  |
++------+----------------------------+------+
+|    1 | robin zakriya              |   28 |
+|    2 | beegam hazrath mahal       | NULL |
+|    3 | ayesha bin muhammad kabeer | NULL |
+|    4 | joy                        | NULL |
+|    5 | robin                      | NULL |
+|    7 | loki                       | NULL |
+|    8 | maya                       | NULL |
+|    2 | beegam hazrath mahal       | NULL |
+|   10 | thor                       | NULL |
+|   11 | Luffy                      | NULL |
++------+----------------------------+------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set id="6" where name="loki";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set id=7 where name="maya"
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table' at line 1
+mysql> select * from demo;
++------+----------------------------+------+
+| id   | name                       | age  |
++------+----------------------------+------+
+|    1 | robin zakriya              |   28 |
+|    2 | beegam hazrath mahal       | NULL |
+|    3 | ayesha bin muhammad kabeer | NULL |
+|    4 | joy                        | NULL |
+|    5 | robin                      | NULL |
+|    6 | loki                       | NULL |
+|    7 | maya                       | NULL |
+|    2 | beegam hazrath mahal       | NULL |
+|   10 | thor                       | NULL |
+|   11 | Luffy                      | NULL |
++------+----------------------------+------+
+10 rows in set (0.00 sec)
+
+mysql> alter table demo add column dep_name varchar(100);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | NULL     |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|    3 | ayesha bin muhammad kabeer | NULL | NULL     |
+|    4 | joy                        | NULL | NULL     |
+|    5 | robin                      | NULL | NULL     |
+|    6 | loki                       | NULL | NULL     |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|   10 | thor                       | NULL | NULL     |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set dep_name="MCA" where id=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|    3 | ayesha bin muhammad kabeer | NULL | NULL     |
+|    4 | joy                        | NULL | NULL     |
+|    5 | robin                      | NULL | NULL     |
+|    6 | loki                       | NULL | NULL     |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|   10 | thor                       | NULL | NULL     |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set age=23 and dep_name="BCA" where id=2;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 2  Changed: 0  Warnings: 0
+
+mysql> update demo set age=22 and dep_name="BCOM" where id=3;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update demo set age=24 and dep_name="BTEC" where id=4;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update demo set age=25 and dep_name="Bsc CS" where id=5;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update demo set age=26 and dep_name="MSC CS" where id=6;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|    3 | ayesha bin muhammad kabeer | NULL | NULL     |
+|    4 | joy                        | NULL | NULL     |
+|    5 | robin                      | NULL | NULL     |
+|    6 | loki                       | NULL | NULL     |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|   10 | thor                       | NULL | NULL     |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set age=26 && dep_name="MSC CS" where id=6;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 1
+
+mysql> update demo set age=26 , dep_name="MSC CS" where id=6;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from demo;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|    3 | ayesha bin muhammad kabeer | NULL | NULL     |
+|    4 | joy                        | NULL | NULL     |
+|    5 | robin                      | NULL | NULL     |
+|    6 | loki                       |   26 | MSC CS   |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|   10 | thor                       | NULL | NULL     |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set age=25 , dep_name="Bsc CS" where id=5;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set age=24 , dep_name="BTEC" where id=4;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update demo set age=22 , dep_name="BCOM" where id=3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table' at line 1
+mysql> select * from demo;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|    3 | ayesha bin muhammad kabeer |   22 | BCOM     |
+|    4 | joy                        |   24 | BTEC     |
+|    5 | robin                      |   25 | Bsc CS   |
+|    6 | loki                       |   26 | MSC CS   |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       | NULL | NULL     |
+|   10 | thor                       | NULL | NULL     |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+10 rows in set (0.00 sec)
+
+mysql> update demo set age=21 , dep_name="BSC BIO" where id=2;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update demo set dep_name="MSC BIO",age ="29" where id=10;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from sample;
+ERROR 1146 (42S02): Table 'sample.sample' doesn't exist
+mysql> select * from demo;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
+|    3 | ayesha bin muhammad kabeer |   22 | BCOM     |
+|    4 | joy                        |   24 | BTEC     |
+|    5 | robin                      |   25 | Bsc CS   |
+|    6 | loki                       |   26 | MSC CS   |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
+|   10 | thor                       |   29 | MSC BIO  |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select id=10 from demo;
++-------+
+| id=10 |
++-------+
+|     0 |
+|     0 |
+|     0 |
+|     0 |
+|     0 |
+|     0 |
+|     0 |
+|     0 |
+|     1 |
+|     0 |
++-------+
+10 rows in set (0.00 sec)
+
+mysql> select * from table where id=10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table where id=10' at line 1
+mysql> select * from demo where id=10;
++------+------+------+----------+
+| id   | name | age  | dep_name |
++------+------+------+----------+
+|   10 | thor |   29 | MSC BIO  |
++------+------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from demo where id=2;
++------+----------------------+------+----------+
+| id   | name                 | age  | dep_name |
++------+----------------------+------+----------+
+|    2 | beegam hazrath mahal |   21 | BSC BIO  |
+|    2 | beegam hazrath mahal |   21 | BSC BIO  |
++------+----------------------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from demo where id>=5;
++------+-------+------+----------+
+| id   | name  | age  | dep_name |
++------+-------+------+----------+
+|    5 | robin |   25 | Bsc CS   |
+|    6 | loki  |   26 | MSC CS   |
+|    7 | maya  | NULL | NULL     |
+|   10 | thor  |   29 | MSC BIO  |
+|   11 | Luffy | NULL | NULL     |
++------+-------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from demo where id>5;
++------+-------+------+----------+
+| id   | name  | age  | dep_name |
++------+-------+------+----------+
+|    6 | loki  |   26 | MSC CS   |
+|    7 | maya  | NULL | NULL     |
+|   10 | thor  |   29 | MSC BIO  |
+|   11 | Luffy | NULL | NULL     |
++------+-------+------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select from demo where id<5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from demo where id<5' at line 1
+mysql> select * from demo where id<5;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
+|    3 | ayesha bin muhammad kabeer |   22 | BCOM     |
+|    4 | joy                        |   24 | BTEC     |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
++------+----------------------------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from demo where id<=5;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
+|    3 | ayesha bin muhammad kabeer |   22 | BCOM     |
+|    4 | joy                        |   24 | BTEC     |
+|    5 | robin                      |   25 | Bsc CS   |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
++------+----------------------------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from demo where id>5,id<10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',id<10' at line 1
+mysql> select * from demo where id>5 and id<10;
++------+------+------+----------+
+| id   | name | age  | dep_name |
++------+------+------+----------+
+|    6 | loki |   26 | MSC CS   |
+|    7 | maya | NULL | NULL     |
++------+------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from demo where id!=5;
++------+----------------------------+------+----------+
+| id   | name                       | age  | dep_name |
++------+----------------------------+------+----------+
+|    1 | robin zakriya              |   28 | MCA      |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
+|    3 | ayesha bin muhammad kabeer |   22 | BCOM     |
+|    4 | joy                        |   24 | BTEC     |
+|    6 | loki                       |   26 | MSC CS   |
+|    7 | maya                       | NULL | NULL     |
+|    2 | beegam hazrath mahal       |   21 | BSC BIO  |
+|   10 | thor                       |   29 | MSC BIO  |
+|   11 | Luffy                      | NULL | NULL     |
++------+----------------------------+------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from demo where id>5 and id<10;
++------+------+------+----------+
+| id   | name | age  | dep_name |
++------+------+------+----------+
+|    6 | loki |   26 | MSC CS   |
+|    7 | maya | NULL | NULL     |
++------+------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select name from demo where name like 'b%';
++----------------------+
+| name                 |
++----------------------+
+| beegam hazrath mahal |
+| beegam hazrath mahal |
++----------------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from demo where name like '_e%';
++----------------------+
+| name                 |
++----------------------+
+| beegam hazrath mahal |
+| beegam hazrath mahal |
++----------------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from demo where name like '_o%';
++---------------+
+| name          |
++---------------+
+| robin zakriya |
+| joy           |
+| robin         |
+| loki          |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> select name from demo where name like '__e%';
++----------------------------+
+| name                       |
++----------------------------+
+| beegam hazrath mahal       |
+| ayesha bin muhammad kabeer |
+| beegam hazrath mahal       |
++----------------------------+
+3 rows in set (0.00 sec)
+
+mysql> select name from demo where name like '_o%';
