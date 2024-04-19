@@ -75,3 +75,53 @@ select name from demo where name like 'b%';
 select name from demo where name like '_o%';
 -thred-
 select name from demo where name like '__e%';
+
+15/03/24
+=========
+
+order
+-------
+select * from demo order by name;
+select * from demo order by name desc;
+
+or , not
+--------
+select * from demo where name="abc" or place="xyz";
+select * from demo where not place="xyz";
+
+null , not null
+---------------
+select * from demo where ph_no is null;
+select * from demo where ph_no is not null;
+
+
+select min(price) from demo;
+select max(price) from demo;
+
+data type float
+---------
+
+alter table demo add column price float(10,2));
+
+between
+---------
+select price from demo where priice betwee 10 & 20
+
+join
+
+select odr.c_id,odr.c_name,odr.order_date,odr.odr_id,prod.pro_id,prod.pro_name from odr join prod on odr.odr_id=prod.odr_id;
+
+alter primary key
+---------------
+alter table prod add primary key(pro_id);
+
+alter foreign key
+-----------------
+ alter table prod add foreign key(odr_id)references odr(odr_id);
+
+
+create table faculty (f_no int not null primary key,f_name varchar(20),);
+
+select * from odr natural join prod;
+
+create  view emp_view as select name , department FROM employee;
