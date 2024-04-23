@@ -1,0 +1,39 @@
+localhost:27017 -- deff port number
+
+
+ show dbs
+ use salah03                                             --To create database in shell
+ db.createCollection('col1')
+ show collections
+
+ db.col1.insert({"name":"salah"})                        --To insert values into collection
+ db.col1.insert({"name":"hadi","age":22})
+
+ db.col1.find()                                          --To show values im mongodb
+ db.col1.find().pretty()                                 --To style
+ db.col1.find().sort({name:-1}).limit(2).forEach(printjson)
+
+ db.col1.find({age:{$gt:20}}).pretty()                   --retrieve values greater than20  
+ db.col1.find({age:{$lt:21}}).pretty()                   --retrieve values lessthan 21
+ db.col1.find({age:{$gte:20}}).pretty()                  --retrieve values greaterthan or equalto 20  
+ db.col1.find({age:{$lte:20}}).pretty()                  --retrieve values lessthan or equalto 20 
+
+ db.col1.distinct("name")                                --to remove duplicate
+ db.col1.count()                                         --to count total number of values  
+
+ db.col1.update({name:"fidha"},{$set:{name:"aswin"}})    --to update
+ db.col1.updateOne({name:"lami"},{$set:{name:"salah"}})
+ db.col1.updateOne({name:"lami"},{$set:{name:"salah"}})
+
+ db.col1.remove({name:"anu"})               to remove a value
+
+ db.col1.insertMany([{name:"renna",age:20},{name:"fidha",age:21}])  
+ db.col1.find().sort({name:1})                            --display in ascending order
+ db.col1.find().sort({name:-1})                           --display in descending order
+
+ db.col1.find({name:{$regex:"f"}})                        --to get all names include "f" 
+ db.col1.find({name:{$regex:"^a"}})                       --to get names starts with "a"
+ db.col1.find({name:{$regex:/bh/}})                       -- between "bh"
+
+ 
+ 
