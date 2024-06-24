@@ -1,35 +1,35 @@
-clara A estands Thread
+class A extends Thread{
+ public void run(){
+  for (int i=1; i<=5 ;i++){
+   System.out.println("\tFrom Thread A : i =" +i);
+  }
+  System.out.println("Exit from A");
+ }
+}
 
-public veld zuni)
+class B extends Thread{
+ public void run(){
+  for (int j=1; j<=5 ;j++){
+   System.out.println("\tFrom Thread B : j =" +j);
+  }
+  System.out.println("Exit from B");
+ }
+}
 
-fortint 101/ 10-52++ System.out.println("\tFrom Threail A
+class C extends Thread{
+ public void run(){
+  for (int k=1; k<=5 ;k++){
+   System.out.println("\tFrom Thread C : k =" +k);
+  }
+  System.out.println("Exit from C");
+ }
+}
 
-System.out.println("Exit form A
+class ThreadTest{
+ public static void main(String args []){
+  new A().start();
+  new B().start();
+  new C().start();
 
-clase & extends Thread
-
-mihlic void run() for lint 10-5 ++
-
-System.out.println("\tFrom Thread B
-
-System.out.println("Exit from B");
-
-Class C extends Thread
-
-public void run()
-
-Zortint kel, kc-57 k++)
-
-System.out.println("\tFrom Thread Ck+k)
-
-System.out.println("Exit from C");
-
-class ThreadTest
-
-public static void main(String args[ 1)
-
-new Ai ).start()
-
-new Bi).start();
-
-new Cli.start():
+ }
+}
