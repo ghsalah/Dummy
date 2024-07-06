@@ -4,7 +4,7 @@ mkdir \data\rs1
 mkdir \data\rs2
 mkdir \data\rs3
 
-admin cmd
+//admin cmd
 
 cd "C:\Program Files\MongoDB\Server\5.0\bin"
 
