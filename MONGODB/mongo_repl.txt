@@ -21,6 +21,11 @@ config = {_id:"test",members:[
 
 rs.initiate(config)
 rs.status()
+
+use testdb
+db.collection.insertOne({ name: "John Doe", age: 30 });
+db.collection.find();
+
 show dbs
 use testdb
 use admin
