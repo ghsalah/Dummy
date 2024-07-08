@@ -24,9 +24,44 @@ rs.status()
 
 use testdb
 db.collection.insertOne({ name: "John Doe", age: 30 });
-db.collection.find();
-
+db.student.insert({name:"primary"})
+db.student.find();
 show dbs
 use testdb
+
+only in the end  shutdown the server
+
 use admin
 db.shutdownServer();
+
+
+//open new cmd
+
+ --port 27019
+//only use if primary come
+-----------------------------------------
+ db.getMongo().setReadPref('secondary')
+ rs.stepDown()
+------------------------------------------
+ show dbs
+ rs.slaveOk()
+ show dbs
+
+ show collections
+ use testdb
+ show collections
+
+// open new cmd 
+ --port 27020
+------------------------------------------
+ db.getMongo().setReadPref('secondary')
+ rs.stepDown()
+-----------------------------------------
+ rs.slaveOk()
+ show dbs
+use testdb
+show collections
+ db.student.find()
+db.test.insert({name:"secondary"})
+db.student.find();
+
