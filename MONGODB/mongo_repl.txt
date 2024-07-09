@@ -23,7 +23,10 @@ rs.initiate(config)
 rs.status()
 
 use testdb
-db.collection.insertOne({ name: "John Doe", age: 30 });
+------------------------------------------------------
+// db.collection.insert({ name: "John Doe", age: 30 });
+// or
+------------------------------------------------------
 db.student.insert({name:"primary"})
 db.student.find();
 show dbs
